@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/9.5.0/bin/node /usr/local/bin/yarn add webpack
+  /usr/local/Cellar/node/9.5.0/bin/node /usr/local/bin/yarn add enzyme
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/webpack: ETIMEDOUT
+  Error: https://registry.yarnpkg.com/babel-core: ETIMEDOUT
       at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:135339:19)
       at ontimeout (timers.js:458:11)
       at tryOnTimeout (timers.js:296:5)
@@ -22,19 +22,50 @@ Trace:
 
 npm manifest: 
   {
-    "name": "Indecision",
+    "name": "BoilerPlate",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
     "scripts": {
       "serve": "live-server public/",
-      "build": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+      "build": "webpack",
+      "dev-server": "webpack-dev-server",
+      "test-watch": "jest --watchAll",
+      "test": "jest"
     },
     "dependencies": {
       "babel-cli": "^6.26.0",
+      "babel-core": "^6.26.3",
+      "babel-loader": "^7.1.4",
       "babel-preset-env": "^1.7.0",
       "babel-preset-react": "^6.24.1",
-      "live-server": "^1.2.0"
+      "css-loader": "^0.28.11",
+      "jest": "^23.2.0",
+      "live-server": "^1.2.0",
+      "moment": "^2.22.2",
+      "node-sass": "^4.9.0",
+      "normalize": "^0.3.1",
+      "normalize.css": "^8.0.0",
+      "react": "^16.4.0",
+      "react-addons-shallow-compare": "^15.6.2",
+      "react-dates": "^17.0.0",
+      "react-dom": "^16.4.0",
+      "react-modal": "^3.4.5",
+      "react-redux": "^5.0.7",
+      "react-router-dom": "^4.3.1",
+      "react-test-renderer": "^16.4.1",
+      "redux": "^4.0.0",
+      "sass-loader": "^7.0.3",
+      "style-loader": "^0.21.0",
+      "uuid": "^3.2.1",
+      "validator": "^10.3.0",
+      "webpack": "^4.11.0",
+      "webpack-dev-server": "^3.1.4"
+    },
+    "devDependencies": {
+      "babel-plugin-transform-class-properties": "^6.24.1",
+      "babel-plugin-transform-object-rest-spread": "^6.26.0",
+      "webpack-cli": "^3.0.2"
     }
   }
 
