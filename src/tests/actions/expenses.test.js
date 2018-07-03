@@ -50,5 +50,5 @@ test("Should setup addExpense actioin object with default value", ()=>{
             createdAt: Date.now(),
             id: expect.any(String)
         }
-    });
+    }); 
 });
