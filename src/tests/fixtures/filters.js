@@ -7,11 +7,11 @@ const filters = {
     endDate: undefined, 
 }
 
-const altilters = {
+const altFilters = {
     text: "bills",
     sortBy: "amount",
     startDate: moment(0),
     endDate: moment(0).add(3, "days") 
 }
 
-export { filters, altilters };
+export { filters, altFilters };
