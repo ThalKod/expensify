@@ -9,9 +9,9 @@ const config = {
     messagingSenderId: "12038575609"
   };
 
-  firebase.initializeApp(config);
 
-firebase.database().ref().set({
-    name: "Thal Marcelin"
-});
+firebase.initializeApp(config);
 
+const database = firebase.database();
+
+export { firebase, database as default };

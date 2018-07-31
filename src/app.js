@@ -7,22 +7,10 @@ import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import 'react-dates/initialize';
 import "react-dates/lib/css/_datepicker.css";
-import { addExpense } from "./actions/expenses";
-import { setTextFilter } from "./actions/filters";
-import getVisibleExpenses from "./selectors/expenses";
 import "./firebase/firebase";
 
 
 const store = configureStore();
-
-const expenseOne = store.dispatch(addExpense({description: "Water bill", amount: 24500, createdAt: Date.now()}));
-
-setTimeout(()=>{
-    const expenseTwo = store.dispatch(addExpense({description: "Gas bill", amount: 38500, createdAt: Date.now()}));
-}, 10000);
-// store.dispatch(setTextFilter(""));
-
-console.log(getVisibleExpenses(store.getState().expenses, store.getState().filter));
 
 const jsx = (
     <Provider store={store}>
