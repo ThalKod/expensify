@@ -6,3 +6,5 @@ public/style.css.map
 .DS_Store
 text.js
 playground/
+.env.test
+.env.developement
