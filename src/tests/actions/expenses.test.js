@@ -134,6 +134,9 @@ test("should remove expense from database", (done)=>{
             id: expenses[0].id
         });
 
-        done();
-    })
+        return database.ref(`expenses/${expenses[0].id}`).remove().then((snapshot)=>{
+            expect(snapshot).toBeFalsy();
+            done();
+        });
+    });
 });
