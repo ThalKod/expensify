@@ -134,8 +134,8 @@ test("should remove expense from database", (done)=>{
             id: expenses[0].id
         });
 
-        return database.ref(`expenses/${expenses[0].id}`).remove().then((snapshot)=>{
-            expect(snapshot).toBeFalsy();
+        return database.ref(`expenses/${expenses[0].id}`).once("value").then((snapshot)=>{
+            expect(snapshot.val()).toBeFalsy();
             done();
         });
     });
@@ -152,8 +152,8 @@ test("should update expense from database", (done)=>{
             updates: { description: "boo" }
         });
 
-        return database.ref(`expenses/${expenses[0].id}`).update({ description: "boo" }).then((snapshot)=>{
-            expect(snapshot).toBeFalsy();
+        return database.ref(`expenses/${expenses[0].id}`).once("value").then((snapshot)=>{
+            expect(snapshot.val().description).toBe("boo");
             done();
         });
     })  
