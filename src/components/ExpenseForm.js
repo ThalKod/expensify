@@ -11,7 +11,7 @@ class ExpenseForm extends React.Component{
                 description: props.expense ? props.expense.description : "",
                 note: props.expense ? props.expense.note : "",
                 amount: props.expense ? (props.expense.amount / 100).toString() : "",
-                createAt: props.expense ? moment(props.expense.createAt) : moment(),
+                createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
                 calendarFocused: false,
                 error: ""
             };
@@ -38,9 +38,9 @@ class ExpenseForm extends React.Component{
         }
     }
 
-    onDateChange = (createAt)=>{
-        if(createAt){
-            this.setState(()=>({ createAt }));
+    onDateChange = (createdAt)=>{
+        if(createdAt){
+            this.setState(()=>({ createdAt }));
         }
     };
 
@@ -62,7 +62,7 @@ class ExpenseForm extends React.Component{
             this.props.onSubmit({
                 description: this.state.description,
                 amount: parseFloat(this.state.amount, 10) * 100,
-                createAt: this.state.createAt.valueOf(),
+                createdAt: this.state.createdAt.valueOf(),
                 note: this.state.note
             });
         }
@@ -87,7 +87,7 @@ class ExpenseForm extends React.Component{
                         onChange={this.onAmountChange}
                     />
                     <SingleDatePicker
-                        date={this.state.createAt}
+                        date={this.state.createdAt}
                         onDateChange={this.onDateChange}
                         focused={this.state.calendarFocused}
                         onFocusChange={this.onFocusChange}
