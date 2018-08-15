@@ -70,12 +70,12 @@ class ExpenseForm extends React.Component{
 
     render(){
         return (
-            <div>
-               {this.state.error && <p>{this.state.error}</p>}
-               <form action="" onSubmit={this.onSubmit}>
+               <form className="form" action="" onSubmit={this.onSubmit}>
+                {this.state.error && <p className="form__error">{this.state.error}</p>}
                     <input 
                         type="text"
                         placeholder="Description"
+                        className="text-input"
                         autoFocus
                         value = {this.state.description}
                         onChange = {this.onDescriptionChange}
@@ -83,6 +83,7 @@ class ExpenseForm extends React.Component{
                     <input 
                         type="text"
                         placeholder="Amount"
+                        className="text-input"
                         value={this.state.amount}
                         onChange={this.onAmountChange}
                     />
@@ -95,13 +96,15 @@ class ExpenseForm extends React.Component{
                         isOutsideRange={(day) => false }
                     />
                     <textarea name="" id="" cols="30" rows="10"
+                        className="text-area"
                         placeholder="Add a note for your expense (optional)"
                         onChange={this.onNoteChange}
                         value={this.state.note}
                     ></textarea>
-                    <button>{this.props.expense ? "Edit" : "Add"} Expense</button>
+                    <div>
+                        <button className="button">{this.props.expense ? "Edit" : "Add"} Expense</button>
+                    </div>
                </form>
-            </div>
         )
     }
 }
