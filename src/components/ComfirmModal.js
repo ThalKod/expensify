@@ -9,9 +9,9 @@ export default (props)=>{
         closeTimeoutMS={200}
         className="modal"
         >
-            <h3>Are You sure you want to delete it ?</h3>
-            <button onClick={props.removeExpense}>YES</button>
-            <button onClick={props.handleCloseModal}>NO</button>
+            <h3>Are You sure you want to remove it ?</h3>
+            <button className="button button--danger" onClick={props.removeExpense}>YES</button>
+            <button className="button" onClick={props.handleCloseModal}>NO</button>
         </Modal>
     );
 };
