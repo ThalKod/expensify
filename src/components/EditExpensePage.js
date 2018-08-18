@@ -2,33 +2,49 @@ import React from "react";
 import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
 import { editExpense, startRemoveExpense, startEditExpense } from "../actions/expenses";
+import ComfirmModal from "./ComfirmModal";
 
 
-const EditExpensePage = (props) => {
+class EditExpensePage extends React.Component {
 
-    return (
-        <div>
-            <div className="page-header">
-                <div className="content-container">
-                    <h1 className="page-header__title">Edit Expense</h1>
+    state = {
+        showModal: false,
+    };
+    
+    removeExpense = ()=>{
+        this.props.dispatch(startRemoveExpense({ id: this.props.expense.id }))
+        this.props.history.push("/");
+    }
+
+    handleCloseModal = ()=>{
+        this.setState({ showModal: false });
+    }
+
+    render(){
+        return (
+            <div>
+                <div className="page-header">
+                    <div className="content-container">
+                        <h1 className="page-header__title">Edit Expense</h1>
+                    </div>
                 </div>
+                <div className="content-container">
+                    <ExpenseForm
+                    expense={this.props.expense}
+                    onSubmit={(expense)=>{
+                        this.props.dispatch(startEditExpense(this.props.expense.id,expense));
+                        this.props.history.push("/");
+                    }}
+                    />
+                    <button className="button button--secondary" onClick={()=>{
+                        this.setState({ showModal: true });
+                    }}>remove</button>
+                </div>
+                <ComfirmModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal} removeExpense={this.removeExpense} />
             </div>
-            <div className="content-container">
-                <ExpenseForm
-                expense={props.expense}
-                onSubmit={(expense)=>{
-                    props.dispatch(startEditExpense(props.expense.id,expense));
-                    props.history.push("/");
-                }}
-                />
-                <button className="button button--secondary" onClick={()=>{
-                    props.dispatch(startRemoveExpense({ id: props.expense.id }))
-                    props.history.push("/");
-                }}>remove</button>
-            </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
 const mapStateToProps = (state, props)=>{
     return {
